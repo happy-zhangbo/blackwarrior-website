@@ -6,6 +6,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import 'bootstrap/dist/css/bootstrap.css'
 
+
 const app = Vue.createApp(App);
 window.$vueApp = app;
 
@@ -31,13 +32,13 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: true })
 
 router.beforeEach((to, from, next) => {
 
-    if (to.fullPath === '/') {
-        router.push('/index')
-    }
-    if(to.fullPath != '/index' && !commonUtil.isLogin()){
-        router.push('/index');
-        return
-    }
+    // if (to.fullPath === '/') {
+    //     router.push('/login')
+    // }
+    // if(to.fullPath != '/login'){
+    //     router.push('/login');
+    //     return
+    // }
     NProgress.start()
     next()
 })

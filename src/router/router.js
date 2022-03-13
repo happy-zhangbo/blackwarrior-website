@@ -1,6 +1,6 @@
-import { createRouter,createWebHashHistory } from 'vue-router'
+import { createRouter,createWebHistory } from 'vue-router'
 const layout = () => import('@/views/layout')
-// const index = () => import('@/views/index')
+const login = () => import('@/views/login')
 
 import {defaultMenu} from "./menuRouter";
 import routeFile from "./menuRouter"
@@ -25,16 +25,16 @@ defaultMenu.forEach(item => {
 })
 const router = createRouter({
 	// mode: 'history',     //这个模式下，地址栏就不会自己加上#号了
-	"history": createWebHashHistory(),
+	"history": createWebHistory(),
 	routes: [
-		// {
-		// 	path: '/index',
-		// 	name: 'index',
-		// 	component: index
-		// },
+		{
+			path: '/',
+			name: 'login',
+			component: login
+		},
 		{
 			name: 'layout',
-			path: '/',
+			path: '/index',
 			component: layout,
 			children: arr
 		}

@@ -24,8 +24,9 @@ export default {
 }
 </script>
 <style>
+
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
   font-smoothing: antialiased;
   color: #2c3e50;
   margin: 0 auto;
