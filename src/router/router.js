@@ -23,6 +23,7 @@ defaultMenu.forEach(item => {
 		})
 	}
 })
+console.log(arr);
 const router = createRouter({
 	// mode: 'history',     //这个模式下，地址栏就不会自己加上#号了
 	"history": createWebHistory(),
@@ -34,7 +35,7 @@ const router = createRouter({
 		},
 		{
 			name: 'layout',
-			path: '/index',
+			path: '/home',
 			component: layout,
 			children: arr
 		}

@@ -83,6 +83,10 @@ module.exports = {
     // port: "8080",
     // https: false,
     // hotOnly: false,
+    historyApiFallback: {
+      index: '/index.html'
+      //与output的publicPath有关(HTMLplugin生成的html默认为index.html)
+    },
     proxy: {
       "/api": {
         target: "http://127.0.0.1:8080/",
