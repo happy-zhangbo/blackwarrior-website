@@ -22,6 +22,9 @@
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: "login",
+  created() {
+
+  },
   methods: {
     login(){
       this.$router.push("/index");
