@@ -39,33 +39,11 @@ module.exports = {
 
   },
   chainWebpack: config => {
-    const cdn = {
-      css: ["//cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/theme-chalk/index.css"],
-      js: [
-        "//cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.min.js",
-        "//cdn.bootcdn.net/ajax/libs/vuex/3.1.3/vuex.min.js",
-        "//cdn.bootcdn.net/ajax/libs/vue-router/3.1.3/vue-router.min.js",
-        "//cdn.bootcdn.net/ajax/libs/echarts/4.2.0-rc.2/echarts.common.min.js",
-        "//cdn.bootcdn.net/ajax/libs/jquery/3.2.0/jquery.min.js",
-        "//cdn.bootcdn.net/ajax/libs/axios/0.19.2/axios.min.js",
-        "//cdn.bootcdn.net/ajax/libs/element-ui/2.13.2/index.js"
-      ]
-    }
-    config.plugin("html").tap(args => {
-      args[0].cdn = cdn;
-      return args;
-    });
-
     config.module
         .rule('css')
         .test(/\.css$/)
         .oneOf('vue')
         .resourceQuery(/\?vue/)
-        .use('px2rem')
-        .loader('px2rem-loader')
-        .options({
-          remUnit: 75
-        })
     config.resolve.alias
         .set('@', resolve('src'))
         .set('assets', resolve('src/assets'))

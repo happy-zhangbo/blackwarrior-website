@@ -9,12 +9,13 @@ export const defaultMenu = [
 	}
 ]
 
+const index = () => import("@/views/index")
 //路由文件
 const routeFile = [
 	{
 		path: '/index',
 		name: 'Index',
-		component: import('@/views/index')
+		component: index
 	}
 ]
 

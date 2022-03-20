@@ -35,13 +35,13 @@ NProgress.configure({ easing: 'ease', speed: 500, showSpinner: true })
 
 
 router.beforeEach((to, from, next) => {
-    // if (to.fullPath === '/') {
-    //     router.push('/login')
-    // }
-    // if(to.fullPath != '/login'){
-    //     router.push('/login');
-    //     return
-    // }
+    if (to.fullPath === '/') {
+        router.push('/index')
+    }
+    if(to.fullPath != '/index'){
+        router.push('/index');
+        return
+    }
     NProgress.start()
     next()
 })
