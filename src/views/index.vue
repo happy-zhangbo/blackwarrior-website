@@ -2,21 +2,11 @@
   <div>
     <div class="p-5 bg-dark text-white text-center">
       <h1>Black Warrior Chain</h1>
+      <br /><br />
+      <button type="button" class="btn bg-black btn-lg text-light col-md-2 m-2" @click="connect">Connect Wallet</button>
     </div>
     <div class="container-xxl mt-3">
-      <div class="row justify-content-md-center">
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="connect">Connect Wallet</button>
-        <a type="button" class="btn bg-dark text-light col-md-2 m-2" href="https://explorer.blackwarrior.vip/#" target="_blank">Block Explorers</a>
-      </div>
-      <div>
-        ps:  The above contents are all test functions
-      </div>
-      <br />
-      <br />
-      <div>Account: {{ account }}</div>
-      <div>ChainId: {{ id }}</div>
-      <div>Balance: {{ balance }}</div>
-<!--      <div>ERC20Token: {{ account }}</div>-->
+
     </div>
     <br />
     <div class="p-4 bg-dark text-white text-center fixed-bottom">
@@ -27,6 +17,7 @@
 
 <script>
 import detectEthereumProvider from '@metamask/detect-provider';
+import WalletConnectProvider from "@walletconnect/web3-provider";
 import Web3 from "web3";
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -39,8 +30,14 @@ export default {
       id: 0,
     }
   },
-  created() {
-
+  async created() {
+    const provider = new WalletConnectProvider({
+      rpc: {
+        1008: "https://www.blackwarrior.vip/eth",
+      },
+      qrcode: false
+    });
+    await provider.enable();
   },
   methods: {
     ha(){

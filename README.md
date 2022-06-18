@@ -1,4 +1,4 @@
-# vue-bootstrap5
+# BLACK WARRIOR
 
 ## Project setup
 ```
