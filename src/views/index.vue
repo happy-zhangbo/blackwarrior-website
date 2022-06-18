@@ -1,18 +1,12 @@
 <template>
   <div>
     <div class="p-5 bg-dark text-white text-center">
-      <h1>Dev Chain</h1>
+      <h1>Black Warrior Chain</h1>
     </div>
     <div class="container-xxl mt-3">
       <div class="row justify-content-md-center">
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="connect">1. Connect</button>
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="addNetwork">2. Add Network</button>
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="regTokens">3. Add Token</button>
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="getAwsToken">4. Get AWS Token</button>
-        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="getSuperToken">5. Get Super Token</button>
-        <a type="button" class="btn bg-dark text-light col-md-2 m-2" href="http://44.201.192.39:4000/" target="_blank">6. Block Explorers</a>
-        <a type="button" class="btn bg-dark text-light col-md-2 m-2" href="https://snapshot.org/#/superbear.eth" target="_blank">7. DAO vote</a>
-        <a type="button" class="btn bg-dark text-light col-md-2 m-2 disabled">8. Multi-signature wallet</a>
+        <button type="button" class="btn bg-dark text-light col-md-2 m-2" @click="connect">Connect Wallet</button>
+        <a type="button" class="btn bg-dark text-light col-md-2 m-2" href="https://explorer.blackwarrior.vip/#" target="_blank">Block Explorers</a>
       </div>
       <div>
         ps:  The above contents are all test functions
@@ -73,28 +67,33 @@ export default {
       this.id = chainID;
       var balance = await web3.eth.getBalance(accounts[0]);
       this.balance = web3.utils.fromWei(balance,'ether');
+      if(chainID != "1008"){
+        await this.addNetwork()
+        this.connect();
+      }
     },
     async addNetwork(){
       await window.ethereum.request({
         method: 'wallet_addEthereumChain',
         params: [
           {
-            chainId: '0x7e6',
+            chainId: '0x3f0',
             chainName: 'Black Warrior',
-            rpcUrls: ['https://www.blackwarrior.vip/provider'],
+            rpcUrls: ['https://www.blackwarrior.vip/eth'],
+            iconUrls: ["http://explorer.blackwarrior.vip/images/l.jpg"],
             nativeCurrency: {
               name: "Black Warrior",
-              symbol: "BW", // 2-6 characters long
+              symbol: "BAK", // 2-6 characters long
               decimals: 18
             },
-            blockExplorerUrls: ["https://www.blackwarrior.vip/blockscout/"]
+            blockExplorerUrls: ["https://explorer.blackwarrior.vip/"]
           },
         ],
       });
     },
     async regTokens(){
-      const tokenAddress = '0x80F46e921607a3C44f87E87082FA6222A7322Ee0';
-      const tokenSymbol = 'super';
+      const tokenAddress = '0xfd454Fad553770262E1e0c3c3D6f9B2170042C6B';
+      const tokenSymbol = 'AB';
       const tokenDecimals = 18;
       const tokenImage = 'http://placekitten.com/200/300';
 
